@@ -2,7 +2,6 @@ pipeline {
     agent {
         docker {
             image 'cypress/base:12.16.1'
-            args '-p 3000:3000'
         }
     }
     environment {
@@ -11,14 +10,15 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                sh 'npm -v ; node -v'
-                sh 'npm cache clean --force'
+                echo 'Node version: ${node -v}'
+                echo 'Npm version: ${npm -v}'
                 sh 'npm install'
             }
         }
         stage('Build') {
             steps {
-                sh 'npm run ng build'
+                sh 'ls -l'
+                sh 'ls -l ./node_modules'
             }
         }
         stage('Test') {
