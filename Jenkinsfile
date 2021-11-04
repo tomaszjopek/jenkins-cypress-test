@@ -5,12 +5,15 @@ pipeline {
             args '-p 3000:3000'
         }
     }
+    environment {
+        HOME = '.'
+    }
     stages {
         stage('Install Dependencies') {
             steps {
                 sh 'npm -v ; node -v'
                 sh 'npm cache clean --force'
-                sh 'npx cypress verify'
+                sh 'npm install'
             }
         }
         stage('Build') {
