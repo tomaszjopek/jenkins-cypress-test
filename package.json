@@ -10,8 +10,7 @@
     "cy:run": "cypress run",
     "cy:verify": "cypress verify",
     "ci:start-ng": "angular-http-server --path ./dist/jenkins-cypress-test -p 4200",
-    "ci:cy-run": "start-server-and-test ci:start-ng http://localhost:4200 cy:run",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "ci:cy-run": "start-server-and-test ci:start-ng http://localhost:4200 cy:run"
   },
   "private": true,
   "dependencies": {
