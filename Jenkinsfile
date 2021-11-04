@@ -18,7 +18,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'echo "it is building right now"'
+                sh 'ng version'
+                sh 'ng build'
             }
         }
         stage('Test') {
