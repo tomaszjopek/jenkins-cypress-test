@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh 'chmod 755 ./node_modules/@angular/cli/bin/ng'
                 sh './node_modules/@angular/cli/bin/ng version'
-                sh './node_modules/@angular/cli/bin/ng build'
+                sh 'npm run ci:build'
             }
         }
         stage('Test') {
