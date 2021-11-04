@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh 'npm -v ; node -v'
                 sh 'npm cache clean --force'
-                sh 'npm ci'
+                sh 'npx cypress verify'
             }
         }
         stage('Build') {
