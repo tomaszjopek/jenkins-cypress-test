@@ -9,6 +9,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh 'npm -v ; node -v'
+                sh 'npm cache clean --force'
                 sh 'npm ci'
             }
         }
