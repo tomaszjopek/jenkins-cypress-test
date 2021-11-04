@@ -10,15 +10,14 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                echo 'Node version: ${node -v}'
-                echo 'Npm version: ${npm -v}'
+                sh 'echo "Node version: ${node -v}"'
+                sh 'echo "Npm version: ${npm -v}""'
                 sh 'npm install'
             }
         }
         stage('Build') {
             steps {
-                sh 'ls -l'
-                sh 'ls -l ./node_modules'
+                sh './node_modules/@angular/cli/bin/ng build'
             }
         }
         stage('Test') {
