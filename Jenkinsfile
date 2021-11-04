@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'echo "it is testing right now"'
+                sh 'npx cypress run --headless'
             }
         }
     }
