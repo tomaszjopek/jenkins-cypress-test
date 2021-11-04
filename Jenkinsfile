@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'npx cypress run --headless'
+                sh 'npm cy:verify'
             }
         }
     }
