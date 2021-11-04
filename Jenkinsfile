@@ -10,13 +10,13 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                sh 'echo "Node version: ${node -v}"'
-                sh 'echo "Npm version: ${npm -v}""'
+                sh 'node -v ; npm -v"'
                 sh 'npm install'
             }
         }
         stage('Build') {
             steps {
+                sh './node_modules/@angular/cli/bin/ng version'
                 sh './node_modules/@angular/cli/bin/ng build'
             }
         }
