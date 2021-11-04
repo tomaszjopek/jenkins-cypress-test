@@ -1,6 +1,7 @@
 {
   "name": "jenkins-cypress-test",
   "version": "0.0.0",
+  "main": "jenkins-cypress-test",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
