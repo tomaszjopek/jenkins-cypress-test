@@ -8,9 +8,8 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                sh 'echo "installing dependencies"'
-                sh 'npm -v'
-                sh 'node -v'
+                sh 'npm -v ; node -v'
+                sh 'npm ci'
             }
         }
         stage('Build') {
