@@ -1,8 +1,8 @@
 pipeline {
     agent {
-        node {
-            label 'master'
-        }
+       docker {
+         image 'cypress/base:12.18.4'
+       }
     }
     environment {
         HOME = '.'
@@ -30,11 +30,6 @@ pipeline {
             }
         }
         stage('Test') {
-            agent {
-                docker {
-                    image 'cypress/base:12.18.4'
-                }
-            }
             steps {
                 sh 'npm run cy:verify'
                 sh 'ls -la'
