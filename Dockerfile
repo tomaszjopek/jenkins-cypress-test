@@ -1,12 +1,9 @@
 FROM cypress/base:12.16.1
 
-RUN mkdir /usr/jenkins-cypress-test
-WORKDIR /usr/jenkins-cypress-test
+WORKDIR /app
 
-COPY ./cypress /usr/jenkins-cypress-test/cypress
-COPY ./cypress.json /usr/jenkins-cypress-test/
-COPY ./package.json /usr/jenkins-cypress-test/
-COPY ./package-lock.json /usr/jenkins-cypress-test/
+COPY ./cypress ./cypress
+COPY ./cypress.json ./cypress.json
+COPY ./package.json ./package.json
 
-#RUN npm install
-#ENTRYPOINT npx cypress open
+RUN npm i && npx cypress run

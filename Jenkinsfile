@@ -30,8 +30,14 @@ pipeline {
             }
         }
         stage('Test') {
+            agent {
+                dockerfile {
+                    filename 'Dockerfile'
+                    dir '.'
+                }
+            }
             steps {
-                sh 'npm run cy:verify'
+                sh 'npx cypress run'
                 sh 'ls -la'
                 sh 'pwd'
                 sh 'ls -l /'
