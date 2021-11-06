@@ -16,6 +16,7 @@ pipeline {
                 sh 'pwd'
                 sh 'ls -l /'
                 sh 'ls -l /home'
+                sh 'ls -l /home/node'
                 sh 'printenv'
             }
         }
