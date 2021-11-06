@@ -11,7 +11,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh 'node -v ; npm -v'
-//                 sh 'npm ci'
+                sh 'npm ci'
                 sh 'ls -la'
                 sh 'pwd'
                 sh 'ls -l /'
@@ -31,7 +31,7 @@ pipeline {
 //         }
         stage('Test') {
             steps {
-                sh 'npm run cy:verify'
+//                 sh 'npm run cy:verify'
                 sh 'ls -la'
                 sh 'pwd'
                 sh 'ls -l /'
