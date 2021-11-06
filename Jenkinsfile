@@ -1,7 +1,7 @@
 pipeline {
     agent {
-        docker {
-            image 'cypress/base:12.18.4'
+        node {
+            label 'jenkins'
         }
     }
     environment {
@@ -20,18 +20,23 @@ pipeline {
                 sh 'printenv'
             }
         }
-//         stage('Build') {
-//             steps {
-//                 sh 'chmod 755 ./node_modules/@angular/cli/bin/ng'
-//                 sh './node_modules/@angular/cli/bin/ng version'
-//                 sh 'npm run ci:build'
-//                 sh 'ls -la'
-//                 sh 'pwd'
-//             }
-//         }
-        stage('Test') {
+        stage('Build') {
             steps {
-//                 sh 'npm run cy:verify'
+                sh 'chmod 755 ./node_modules/@angular/cli/bin/ng'
+                sh './node_modules/@angular/cli/bin/ng version'
+                sh 'npm run ci:build'
+                sh 'ls -la'
+                sh 'pwd'
+            }
+        }
+        stage('Test') {
+            agent {
+                docker {
+                    image 'cypress/base:12.18.4'
+                }
+            }
+            steps {
+                sh 'npm run cy:verify'
                 sh 'ls -la'
                 sh 'pwd'
                 sh 'ls -l /'
