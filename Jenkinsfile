@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         HOME = '.'
-        CYPRESS_CACHE_FOLDER='$PWD/cypress-cache'
+        CYPRESS_CACHE_FOLDER='./cypress-cache'
     }
     stages {
         stage('Install Dependencies') {
@@ -27,8 +27,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh '$(npm bin) cypress run'
-                sh 'npx cypress run'
+                sh 'npx cypress run --headless'
             }
         }
     }
