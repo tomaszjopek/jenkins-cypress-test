@@ -6,18 +6,13 @@ pipeline {
     }
     environment {
         HOME = '.'
+        CYPRESS_CACHE_FOLDER=$PWD/cypress-cache
     }
     stages {
         stage('Install Dependencies') {
             steps {
                 sh 'node -v ; npm -v'
                 sh 'npm ci'
-                sh 'ls -la'
-                sh 'pwd'
-                sh 'ls -l /'
-                sh 'ls -l /home'
-                sh 'ls -la /home/node'
-                sh 'printenv'
             }
         }
         stage('Build') {
@@ -25,25 +20,15 @@ pipeline {
                 sh 'chmod 755 ./node_modules/@angular/cli/bin/ng'
                 sh './node_modules/@angular/cli/bin/ng version'
                 sh 'npm run ci:build'
-                sh 'ls -la'
-                sh 'pwd'
+                sh 'npx cypress cache path'
+                sh 'npx cypress cache list'
+                sh 'npm run cy:verify'
             }
         }
         stage('Test') {
-            agent {
-                dockerfile {
-                    filename 'Dockerfile'
-                    dir '.'
-                }
-            }
             steps {
+                sh '$(npm bin) cypress run'
                 sh 'npx cypress run'
-                sh 'ls -la'
-                sh 'pwd'
-                sh 'ls -l /'
-                sh 'ls -l /home'
-                sh 'ls -la /home/node'
-                sh 'printenv'
             }
         }
     }
