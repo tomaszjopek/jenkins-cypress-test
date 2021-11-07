@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         HOME = '.'
-        CYPRESS_CACHE_FOLDER=$PWD/cypress-cache
+        CYPRESS_CACHE_FOLDER='$PWD/cypress-cache'
     }
     stages {
         stage('Install Dependencies') {
