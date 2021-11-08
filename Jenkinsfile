@@ -27,15 +27,13 @@ pipeline {
         }
         stage('Run tests') {
             parallel {
-              stage('Run tests on chrome') {
-                steps {
-                  sh 'npm run ci:cy-run-chrome'
-                }
-              }
+//               stage('Run tests on chrome') {
+//                 steps {
+//                   sh 'npm run ci:cy-run-chrome'
+//                 }
+//               }
               stage('Run tests on firefox') {
                 steps {
-                  sh 'whoami'
-                  sh 'pwd'
                   sh 'npm run ci:cy-run-firefox'
                 }
               }
