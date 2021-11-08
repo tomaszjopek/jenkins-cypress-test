@@ -8,10 +8,12 @@
     "ci:build": "node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "cy:run": "cypress run --headless --browser chrome",
+    "cy:run-chrome": "cypress run --headless --browser chrome",
+    "cy:run-firefox": "cypress run --headless --browser firefox",
     "cy:verify": "cypress verify",
     "ci:start-ng": "angular-http-server --path ./dist/jenkins-cypress-test -p 4200",
-    "ci:cy-run": "start-server-and-test ci:start-ng http://localhost:4200 cy:run"
+    "ci:cy-run-chrome": "start-server-and-test ci:start-ng http://localhost:4200 cy:run-chrome",
+    "ci:cy-run-firefox": "start-server-and-test ci:start-ng http://localhost:4200 cy:run-firefox"
   },
   "private": true,
   "dependencies": {

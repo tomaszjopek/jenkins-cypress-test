@@ -25,9 +25,18 @@ pipeline {
                 sh 'npm run cy:verify'
             }
         }
-        stage('Test') {
-            steps {
-                sh 'npm run ci:cy-run'
+        stage('Run tests') {
+            parallel {
+              stage('Run tests on chrome') {
+                steps {
+                  sh 'npm run ci:cy-run-chrome'
+                }
+              }
+              stage('Run tests on firefox') {
+                steps {
+                  sh 'npm run ci:cy-run-firefox'
+                }
+              }
             }
         }
     }
