@@ -32,11 +32,11 @@ pipeline {
                   sh 'npm run ci:cy-run-chrome'
                 }
               }
-//               stage('Run tests on firefox') {
-//                 steps {
-//                   sh 'npm run ci:cy-run-firefox'
-//                 }
-//               }
+              stage('Run tests on firefox') {
+                steps {
+                  sh 'npm run ci:cy-run-firefox'
+                }
+              }
             }
         }
     }
