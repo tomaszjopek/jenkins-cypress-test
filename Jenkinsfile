@@ -34,6 +34,8 @@ pipeline {
               }
               stage('Run tests on firefox') {
                 steps {
+                  sh 'whoami'
+                  sh 'pwd'
                   sh 'npm run ci:cy-run-firefox'
                 }
               }
