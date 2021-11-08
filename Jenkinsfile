@@ -1,7 +1,7 @@
 pipeline {
     agent {
        docker {
-         image 'cypress/base:12.18.4'
+         image 'cypress/browsers:node16.5.0-chrome94-ff93'
        }
     }
     environment {
