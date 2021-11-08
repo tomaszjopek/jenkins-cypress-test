@@ -11,9 +11,10 @@
     "cy:run-chrome": "cypress run --headless --browser chrome",
     "cy:run-firefox": "cypress run --headless --browser firefox",
     "cy:verify": "cypress verify",
-    "ci:start-ng": "angular-http-server --path ./dist/jenkins-cypress-test -p 4200",
-    "ci:cy-run-chrome": "start-server-and-test ci:start-ng http://localhost:4200 cy:run-chrome",
-    "ci:cy-run-firefox": "start-server-and-test ci:start-ng http://localhost:4200 cy:run-firefox"
+    "ci:start-ng-chrome": "angular-http-server --path ./dist/jenkins-cypress-test -p 4200",
+    "ci:start-ng-firefox": "angular-http-server --path ./dist/jenkins-cypress-test -p 4201",
+    "ci:cy-run-chrome": "start-server-and-test ci:start-ng-chrome http://localhost:4200 cy:run-chrome",
+    "ci:cy-run-firefox": "start-server-and-test ci:start-ng-firefox http://localhost:4201 cy:run-firefox"
   },
   "private": true,
   "dependencies": {
