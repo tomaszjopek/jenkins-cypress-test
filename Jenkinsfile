@@ -31,4 +31,9 @@ pipeline {
             }
         }
     }
+    post {
+      always {
+        archiveArtifacts artifacts: 'dist/jenkins-cypress-test', onlyIfSuccessful: true
+      }
+    }
 }
