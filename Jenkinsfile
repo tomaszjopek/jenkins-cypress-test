@@ -27,16 +27,16 @@ pipeline {
         }
         stage('Run tests') {
             parallel {
-//               stage('Run tests on chrome') {
-//                 steps {
-//                   sh 'npm run ci:cy-run-chrome'
-//                 }
-//               }
-              stage('Run tests on firefox') {
+              stage('Run tests on chrome') {
                 steps {
-                  sh 'npm run ci:cy-run-firefox'
+                  sh 'npm run ci:cy-run-chrome'
                 }
               }
+//               stage('Run tests on firefox') {
+//                 steps {
+//                   sh 'npm run ci:cy-run-firefox'
+//                 }
+//               }
             }
         }
     }
