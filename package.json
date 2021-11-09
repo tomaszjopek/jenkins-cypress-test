@@ -14,7 +14,9 @@
     "ci:start-ng-chrome": "angular-http-server --path ./dist/jenkins-cypress-test -p 4200",
     "ci:start-ng-firefox": "angular-http-server --path ./dist/jenkins-cypress-test -p 4201",
     "ci:cy-run-chrome": "start-server-and-test ci:start-ng-chrome http://localhost:4200 cy:run-chrome",
-    "ci:cy-run-firefox": "start-server-and-test ci:start-ng-firefox http://localhost:4201 cy:run-firefox"
+    "ci:cy-run-firefox": "start-server-and-test ci:start-ng-firefox http://localhost:4201 cy:run-firefox",
+    "report:merge": "mochawesome-merge cypress/results/json/*.json -o mochawesome-bundle.json",
+    "report:generate": "marge mochawesome-bundle.json -o cypress/reports --charts true"
   },
   "private": true,
   "dependencies": {
@@ -47,6 +49,8 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "mocha": "^9.1.3",
     "mochawesome": "^7.0.1",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^6.0.1",
     "start-server-and-test": "^1.14.0",
     "typescript": "~4.3.2"
   }

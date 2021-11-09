@@ -26,18 +26,23 @@ pipeline {
             }
         }
         stage('Run tests') {
-            parallel {
-              stage('Run tests on chrome') {
-                steps {
-                  sh 'npm run ci:cy-run-chrome'
-                }
-              }
-//               stage('Run tests on firefox') {
-//                 steps {
-//                   sh 'npm run ci:cy-run-firefox'
-//                 }
-//               }
-            }
+             steps {
+               sh 'rm -f mochawesome-bundle.json'
+               sh 'rm -rf cypress/reports'
+               sh 'rm -rf cypress/results'
+               sh 'npm run ci:cy-run-chrome'
+               sh 'npm run report:merge'
+               sh 'npm run report:generate'
+
+               publishHTML target: [
+                           allowMissing: false,
+                           alwaysLinkToLastBuild: false,
+                           keepAll: true,
+                           reportDir: 'cypress/reports',
+                           reportFiles: 'mochawesome-bundle.html',
+                           reportName: 'Cypress run tests'
+                         ]
+             }
         }
     }
     post {
