@@ -16,7 +16,7 @@
     "ci:cy-run-chrome": "start-server-and-test ci:start-ng-chrome http://localhost:4200 cy:run-chrome",
     "ci:cy-run-firefox": "start-server-and-test ci:start-ng-firefox http://localhost:4201 cy:run-firefox",
     "report:merge": "mochawesome-merge cypress/results/json/*.json -o mochawesome-bundle.json",
-    "report:generate": "marge mochawesome-bundle.json -o cypress/reports --charts true"
+    "report:generate": "marge mochawesome-bundle.json -o cypress/reports --charts true -i"
   },
   "private": true,
   "dependencies": {
